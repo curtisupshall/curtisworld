@@ -1,8 +1,9 @@
 import React from 'react'
+import LoginModal from '../components/Modals/Login'
 
 const Home = () => {
     return (
-        <div>Hello world!</div>
+        <LoginModal />
     )
 }
 

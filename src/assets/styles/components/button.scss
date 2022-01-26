@@ -1,0 +1,17 @@
+.loading-button {
+    &__container {
+        position: relative;
+	    display: inline-block;
+    }
+
+    &__spinner {
+        // width: 24px;
+        // height: 24px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        // transform: translate(-50%, -50%);
+        margin-top: -12px;
+		margin-left: -12px;
+    }
+}

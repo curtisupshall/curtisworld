@@ -1,0 +1,17 @@
+.qr-code {
+    margin: 0 auto;
+
+    &__placeholder {
+        width: 256px;
+        height: 256px;
+    }
+
+    &__spinner {
+        // width: 24px;
+        // height: 24px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
