@@ -23,7 +23,7 @@ const QRCode = (props: IQRCodeProps) => {
             {empty ? (
                 <img className='qr-code__placeholder' src='/images/qr_placeholder.png' />
             ) : (
-                <ReactQRCode value={qrcode} />
+                <ReactQRCode size={128} value={qrcode} className='qr-code__svg' />
             )}
         </div>
     )

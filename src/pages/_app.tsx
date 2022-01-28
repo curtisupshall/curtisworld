@@ -15,6 +15,7 @@ const CustomApp = (props: AppProps) => {
                 <link rel="preconnect" href="https://fonts.gstatic.com" />
                 <meta name='viewport' content='width=device-width, initial-scale=1' />
                 <link rel="preconnect" href="https://fonts.gstatic.com" />
+                <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
                 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet" />
                 <title>Curtis' World'</title>
             </Head>
