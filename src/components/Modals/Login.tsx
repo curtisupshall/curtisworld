@@ -11,6 +11,7 @@ import {
     Typography,
     DialogContentText,
     DialogTitle,
+    Paper,
     TextField
 } from '@material-ui/core'
 import LoadingButton from '../LoadingButton'
@@ -69,7 +70,7 @@ const Login = () => {
     )
 
     return (
-        <Dialog open={true}>
+        <Paper open={true}>
             <DialogTitle>App Sign-in</DialogTitle>
             <DialogContent>
                 <DialogContentText>Generate a QR code to authenticate with the app.</DialogContentText>
@@ -96,7 +97,7 @@ const Login = () => {
             <DialogActions>
                 <LoadingButton loading={loadingLogin} variant='contained' color='primary'>Login</LoadingButton>
             </DialogActions>
-        </Dialog>
+        </Paper>
     )
 }
 
