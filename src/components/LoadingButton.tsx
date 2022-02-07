@@ -1,8 +1,8 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import Button, { ButtonProps } from '@material-ui/core/Button'
-import CircularProgress from '@material-ui/core/CircularProgress'
+import Button, { ButtonProps } from '@mui/material/Button'
+import CircularProgress from '@mui/material/CircularProgress'
 
 
 interface ILoadingButtonProps extends ButtonProps {

@@ -1,21 +1,19 @@
 import axios from 'axios'
 import React from 'react'
 
-import { Box, Typography } from '@material-ui/core'
+import { Box, Typography } from '@mui/material'
 
 import LoginModal from '../components/Modals/Login'
 
 const Home = () => {
 
     React.useEffect(() => {
-        const res = axios.get('/api/test').then((res, err) => {
-            console.log('res:', res)
-        })
+        return
     }, [])
 
     return (
         <div className='home'>
-            <Box flex>
+            <Box display='flex'>
                 <div>
                     <Typography variant='h2'>App</Typography>
                 </div>
