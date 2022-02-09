@@ -12,9 +12,7 @@ import LoginModal from '../components/Modals/Login'
 const Home = () => {
 
     React.useEffect(() => {
-        const res = axios.get('/api/test').then((res, err) => {
-            console.log('res:', res)
-        })
+        return
     }, [])
 
     return (

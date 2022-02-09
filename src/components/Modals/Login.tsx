@@ -13,10 +13,11 @@ import {
     DialogTitle,
     Paper,
     TextField
-} from '@material-ui/core'
+} from '@mui/material'
 import LoadingButton from '../LoadingButton'
 
 import QRCode from '../QRCode'
+import truncateFields, { ITruncatedData} from '../../utils/truncateFields'
 
 type DemoState =
     | 'signed-out'
@@ -35,23 +36,10 @@ const exampleData: Record<string, string> = {
     given_name: 'Curtis'
 }
 
-const truncateData = (data: Record<string, string>, length: number = 5): [Record<string, string>, Record<string, string>] => {
-    if (Object.keys(data).length <= length) {
-        return [data, {}]
-    }
-
-    let keys: string[] = Object.keys(data)
-
-    return [keys, keys.splice(length)]
-            .map((group: string[]) => group.reduce((acc: Record<string, string>, key: string) => (
-                { ...acc, [key]: data[key]}
-            ), {}))
-}
-
 const Login = () => {
     const [loadingLogin, setLoadingLogin] = React.useState(false)
     const [showHidden, setShowHidden] = React.useState(false)
-    const [visible, hidden]: [Record<string, string>, Record<string, string>] = truncateData(exampleData)
+    const { visible, hidden } = truncateFields(exampleData)
     const [showCredentialFields, setShowCredentialFields] = React.useState(true)
     const [demoState, setDemoState]: [DemoState, SetStateAction<DemoState>] = React.useState('signed-out')
     const hasHiddenFields: boolean = Object.keys(hidden).length > 0
@@ -84,7 +72,7 @@ const Login = () => {
     }
 
     return (
-        <Paper className='login' elevation={5}>
+        <Paper>
             <DialogTitle>App Sign-in</DialogTitle>
             <DialogContent>
                 <DialogContentText>Generate a QR code to authenticate with the app.</DialogContentText>
