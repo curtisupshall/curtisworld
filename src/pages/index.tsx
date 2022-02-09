@@ -5,7 +5,7 @@ import {
     Box,
     Button,
     Typography
-} from '@material-ui/core'
+} from '@mui/material'
 
 import LoginModal from '../components/Modals/Login'
 

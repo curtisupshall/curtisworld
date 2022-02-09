@@ -41,7 +41,7 @@ const Login = () => {
     const [showHidden, setShowHidden] = React.useState(false)
     const { visible, hidden } = truncateFields(exampleData)
     const [showCredentialFields, setShowCredentialFields] = React.useState(true)
-    const [demoState, setDemoState]: [DemoState, SetStateAction<DemoState>] = React.useState('signed-out')
+    const [demoState, setDemoState] = React.useState('signed-out')
     const hasHiddenFields: boolean = Object.keys(hidden).length > 0
 
     const handleClickShowHidden = () => {
@@ -77,7 +77,10 @@ const Login = () => {
             <DialogContent>
                 <DialogContentText>Generate a QR code to authenticate with the app.</DialogContentText>
                 <Collapse in={true}>
-                    <QRCode qrcode='1' color={qrCodeColor} />
+                    <QRCode
+                        qrcode='1'
+                        // color={qrCodeColor}
+                    />
                 </Collapse>
                 <Collapse in={showCredentialFields}>
                     {renderCredentialFields(visible)}

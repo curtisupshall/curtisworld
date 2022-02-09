@@ -24,11 +24,8 @@
     "react-qr-code": "^2.0.3"
   },
   "devDependencies": {
-<<<<<<< HEAD
     "@types/node": "^17.0.13",
-=======
     "@types/classnames": "^2.3.1",
->>>>>>> 5e2d95673248ebc1f33e97409d7f3c1725671c53
     "@types/react": "^17.0.38",
     "sass": "^1.49.0",
     "typescript": "^4.5.5"
