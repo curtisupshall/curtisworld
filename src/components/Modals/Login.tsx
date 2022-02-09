@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { SetStateAction } from 'react'
 
 import {
     Button,
@@ -17,6 +17,11 @@ import {
 import LoadingButton from '../LoadingButton'
 
 import QRCode from '../QRCode'
+
+type DemoState =
+    | 'signed-out'
+    | 'generated'
+    | 'scanned'
 
 const exampleData: Record<string, string> = {
     region: 'BC',
@@ -48,13 +53,14 @@ const Login = () => {
     const [showHidden, setShowHidden] = React.useState(false)
     const [visible, hidden]: [Record<string, string>, Record<string, string>] = truncateData(exampleData)
     const [showCredentialFields, setShowCredentialFields] = React.useState(true)
+    const [demoState, setDemoState]: [DemoState, SetStateAction<DemoState>] = React.useState('signed-out')
     const hasHiddenFields: boolean = Object.keys(hidden).length > 0
 
     const handleClickShowHidden = () => {
         setShowHidden(!showHidden)
     }
 
-    const renderCredentialFields = (data) => (
+    const renderCredentialFields = (data: Record<string, string>) => (
         <FormGroup>
             {Object.keys(data).map((key: string) => (
                 <TextField
@@ -69,13 +75,21 @@ const Login = () => {
         </FormGroup>
     )
 
+    let qrCodeColor = '#444'
+
+    if (demoState === 'generated') {
+        qrCodeColor = 'blue'
+    } else if (demoState === 'scanned') {
+        qrCodeColor = 'green'
+    }
+
     return (
-        <Paper open={true}>
+        <Paper className='login' elevation={5}>
             <DialogTitle>App Sign-in</DialogTitle>
             <DialogContent>
                 <DialogContentText>Generate a QR code to authenticate with the app.</DialogContentText>
                 <Collapse in={true}>
-                    <QRCode qrcode='1'/>
+                    <QRCode qrcode='1' color={qrCodeColor} />
                 </Collapse>
                 <Collapse in={showCredentialFields}>
                     {renderCredentialFields(visible)}

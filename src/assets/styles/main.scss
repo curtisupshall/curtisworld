@@ -1,2 +1,10 @@
+/* Reset */
+@import 'reset';
+
+/* Components */
 @import 'components/button';
-@import 'components/qrcode.scss';
+@import 'components/login';
+@import 'components/qrcode';
+
+/* Pages */
+@import 'pages/home';

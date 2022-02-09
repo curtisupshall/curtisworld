@@ -1,0 +1,18 @@
+.home {
+    display: flex;
+    flex-flow: row nowrap;
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 32px;
+    width: 100%;
+    box-sizing: border-box;
+    grid-gap: 32px;
+
+    & > div:first-child {
+        flex: 1;
+    }
+}
+
+h4 {
+    margin-bottom: 16px;
+}

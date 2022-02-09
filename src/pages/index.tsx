@@ -1,7 +1,11 @@
 import axios from 'axios'
 import React from 'react'
 
-import { Box, Typography } from '@material-ui/core'
+import {
+    Box,
+    Button,
+    Typography
+} from '@material-ui/core'
 
 import LoginModal from '../components/Modals/Login'
 
@@ -14,17 +18,20 @@ const Home = () => {
     }, [])
 
     return (
-        <div className='home'>
-            <Box flex>
-                <div>
-                    <Typography variant='h2'>App</Typography>
-                </div>
-                <div>
-                    <Typography variant='h4'>Sign in</Typography>
-                    <LoginModal />
-                </div>
-            </Box>
-        </div>
+        <Box className='home' display='flex'>
+            <div>
+                <Typography variant='h2'>App</Typography>
+                <Typography variant='body1'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus ut, ex nulla tenetur culpa molestias magnam facere veniam quas quos maxime natus ducimus excepturi, amet magni quisquam harum veritatis maiores.</Typography>
+                <Button>Option 1</Button>
+                <Button>Option 2</Button>
+                <Button>Option 3</Button>
+            </div>
+            <div>
+                <Typography variant='h4'>Your Credential</Typography>
+                <Typography variant='body1'>Your verifiable credential is accessed here.</Typography>
+                <LoginModal />
+            </div>
+        </Box>
     )
 }
 
