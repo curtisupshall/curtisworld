@@ -3,7 +3,7 @@ export interface ITruncatedData {
     hidden: Record<string, string>
 }
 
-const truncateFields = (data: Record<string, string>, length: number = 5): ITruncatedData => {
+const truncateFields = (data: Record<string, string>, length: number = 3): ITruncatedData => {
     if (Object.keys(data).length <= length) {
         return { visible: data, hidden: null }
     }
@@ -14,7 +14,8 @@ const truncateFields = (data: Record<string, string>, length: number = 5): ITrun
         { ...acc, [key]: data[key]}
     ), {})
 
-    return { visible: reduceData(dataKeys), hidden: reduceData(dataKeys.splice(length)) }
+    const hidden: Record<string, string> = reduceData(dataKeys.splice(length))
+    return { visible: reduceData(dataKeys), hidden  }
 }
 
 export default truncateFields
