@@ -1,0 +1,22 @@
+.topbar {
+    width: 100vw;
+    height: 64px;
+
+    &__inner {
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+    }
+
+    &__auth {
+        margin: 0 auto;
+        display: flex;
+        flex-flow: row nowrap;
+        grid-gap: 8px;
+    }
+
+    h6 {
+        font-family: monospace;
+        justify-content: center;
+    }
+}

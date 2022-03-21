@@ -4,6 +4,21 @@ import { AppProps } from 'next/app'
 import Head from 'next/head'
 import React from 'react'
 
+import { IUser } from '../types/user'
+
+import AuthProvider from '../components/Providers/AuthProvider'
+import TopBar from '../components/TopBar'
+import { createTheme, Theme } from '@mui/material/styles'
+import { ThemeProvider } from '@mui/styles'
+import { CssBaseline, ScopedCssBaseline } from '@mui/material'
+
+
+const TEST_USER: IUser = {
+    givenName: 'Curtis',
+    familyName: 'Upshall',
+    authorization: 'RESTRICTED'
+}
+
 const CustomApp = (props: AppProps) => {
     const { Component, pageProps } = props
 
@@ -19,9 +34,16 @@ const CustomApp = (props: AppProps) => {
                 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet" />
                 <title>Curtis' World'</title>
             </Head>
-            <div id='app'>
-                <Component {...pageProps} />
-            </div>
+
+                    <div id='curtis-world'>
+                        <AuthProvider user={TEST_USER}>
+                            <div>
+                                <TopBar />
+                                <Component {...pageProps} />
+                            </div>
+                        </AuthProvider>
+                    </div>
+
         </>
     )
 }

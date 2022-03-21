@@ -90,7 +90,7 @@ const Login = () => {
                 </Collapse>
                 {hasHiddenFields && (
                     <Button
-                        color='primary'
+                        color='inherit'
                         variant='text'
                         endIcon={showHidden ? <Icon>expand_less</Icon> : <Icon>expand_more</Icon>}
                         onClick={() => handleClickShowHidden()}
@@ -100,7 +100,7 @@ const Login = () => {
                 )}
             </DialogContent>
             <DialogActions>
-                <LoadingButton loading={loadingLogin} variant='contained' color='primary'>Login</LoadingButton>
+                <LoadingButton loading={loadingLogin} variant='contained' color='inherit'>Login</LoadingButton>
             </DialogActions>
         </Paper>
     )

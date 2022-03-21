@@ -2,9 +2,11 @@
 @import 'reset';
 
 /* Components */
+@import 'components/box';
 @import 'components/button';
 @import 'components/login';
 @import 'components/qrcode';
+@import 'components/topbar';
 
 /* Pages */
 @import 'pages/home';
