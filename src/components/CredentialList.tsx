@@ -43,6 +43,7 @@ const CredentialList = (props: ICredentialListProps) => {
                     label={key}
                     InputLabelProps={{ style: { fontFamily: 'monospace' }}}
                     margin='dense'
+                    size='small'
                 />
             ))}
         </FormGroup>

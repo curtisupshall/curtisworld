@@ -17,8 +17,8 @@ interface IDocumentListProps {
 const DocumentList = (props: IDocumentListProps) => {
     const { documents, onSelect } = props
 
-    const renderDocument = (document: IDocument) => (
-        <ListItem button onClick={() => onSelect(document)}>
+    const renderDocument = (document: IDocument, key: string) => (
+        <ListItem button onClick={() => onSelect(document)} key={key}>
             <ListItemText
                 primary={document.name}
                 secondary={<ClassificationText>{document.classification}</ClassificationText>}
@@ -28,7 +28,7 @@ const DocumentList = (props: IDocumentListProps) => {
 
     return (
         <List>
-            {documents.map((document: IDocument) => renderDocument(document))}
+            {documents.map((document: IDocument, index: number) => renderDocument(document, String(index)))}
         </List>
     )
 }

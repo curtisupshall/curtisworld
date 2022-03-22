@@ -10,6 +10,7 @@ import {
 } from '@mui/material'
 
 import { IDocument } from '../../types/document'
+import ClassificationText from '../ClassificationText'
 
 const EMPTY_DOCUMENT: IDocument = {
     name: '',
@@ -29,12 +30,28 @@ const DocumentDialog = (props: IDocumentDialogProps) => {
     const { name, classification, contents } = document
 
     return (
-        <Dialog open={open}>
+        <Dialog open={open} fullWidth>
             <DialogTitle>{name}</DialogTitle>
             <DialogContent>
-                <TextField multiline value={contents} label='Contents' disabled variant='filled' />
+                <TextField
+                    variant='filled'
+                    label='Classification'
+                    value={<ClassificationText>{classification}</ClassificationText>}
+                    disabled
+                    margin='normal'
+                />                
+                <TextField
+                    multiline
+                    value={contents}
+                    label='Contents'
+                    disabled
+                    variant='filled'
+                    fullWidth
+                />
             </DialogContent>
-            <DialogActions><Button onClick={() => props.onClose()}>Close</Button></DialogActions>
+            <DialogActions>
+                <Button onClick={() => props.onClose()}>Close</Button>
+            </DialogActions>
         </Dialog>
     )
 }
