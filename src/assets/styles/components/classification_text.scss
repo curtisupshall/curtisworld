@@ -1,0 +1,24 @@
+.classification {
+    color: #333;
+
+    &.--critical {
+        color: #C62828;
+    }
+
+    &.--confidential {
+        color: #AD1457;
+    }
+
+    &.--restricted {
+        color: #6A1B9A;
+    }
+
+    &.--public {
+        color: #4527A0;
+    }
+
+    &.--open {
+        //color: #283593;
+        color: #1565C0;
+    }
+}

@@ -14,13 +14,13 @@ const CustomDocument = () => {
     return (
         <Html>
             <ThemeProvider theme={darkTheme}>
-                <ScopedCssBaseline enableColorScheme>
+                {/*<ScopedCssBaseline enableColorScheme>*/}
                     <Head />
                     <body>
                         <Main />
                         <NextScript />
                     </body>
-                </ScopedCssBaseline>
+                {/*</ScopedCssBaseline>*/}
             </ThemeProvider>
         </Html>
     )

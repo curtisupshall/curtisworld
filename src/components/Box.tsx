@@ -27,7 +27,7 @@ export const BoxContent = (props: React.HTMLProps<HTMLDivElement>) => {
     const { className, children, ...rest } = props
     return (
         <>
-            <Divider />
+            <Divider className='box__divider' />
             <div className={classNames('box__content', className)} {...rest}>
                 {children}
             </div>

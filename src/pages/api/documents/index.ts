@@ -14,7 +14,7 @@ const filterDocuments = (documents: IDocument[], user: IUser): IDocument[] => {
     })
 }
 
-const documents: IDocument[] = [
+export const SAMPLE_DOCUMENTS: IDocument[] = [
     {
         name: 'Doc1',
         classification: 'OPEN',
