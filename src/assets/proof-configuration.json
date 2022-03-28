@@ -1,0 +1,19 @@
+{
+    "id":"curtis-world-verified",
+    "subject_identifier":"email",
+    "configuration":{
+       "name":"curtis-world-verified",
+       "version":"1.0",
+       "requested_attributes":[
+          {
+             "name":"authorization",
+             "restrictions":[
+                
+             ]
+          }
+       ],
+       "requested_predicates":[
+ 
+       ]
+    }
+}
