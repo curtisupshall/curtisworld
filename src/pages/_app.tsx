@@ -11,6 +11,7 @@ import TopBar from '../components/TopBar'
 import { createTheme, Theme } from '@mui/material/styles'
 import { ThemeProvider } from '@mui/styles'
 import { CssBaseline, ScopedCssBaseline } from '@mui/material'
+import { KeycloakProvider } from 'react-keycloak'
 
 
 const TEST_USER: IUser = {
@@ -36,12 +37,14 @@ const CustomApp = (props: AppProps) => {
             </Head>
 
                     <div id='curtis-world'>
-                        <AuthProvider user={TEST_USER}>
-                            <div>
-                                <TopBar />
-                                <Component {...pageProps} />
-                            </div>
-                        </AuthProvider>
+                        <KeycloakProvider >
+                            <AuthProvider user={TEST_USER}>
+                                <div>
+                                    <TopBar />
+                                    <Component {...pageProps} />
+                                </div>
+                            </AuthProvider>
+                        </KeycloakProvider>
                     </div>
 
         </>
