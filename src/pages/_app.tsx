@@ -1,6 +1,6 @@
 import '../assets/styles/main.scss'
 
-import { AppProps } from 'next/app'
+import { AppProps as NextAppProps, AppContext } from 'next/app'
 import Head from 'next/head'
 import React from 'react'
 
@@ -11,7 +11,12 @@ import TopBar from '../components/TopBar'
 import { createTheme, Theme } from '@mui/material/styles'
 import { ThemeProvider } from '@mui/styles'
 import { CssBaseline, ScopedCssBaseline } from '@mui/material'
-import { KeycloakProvider } from 'react-keycloak'
+
+// Keycloak
+import Keycloak, { KeycloakConfig } from 'keycloak-js'
+import { SSRKeycloakProvider, SSRCookies } from '@react-keycloak-fork/ssr'
+import { IncomingMessage } from 'http'
+import cookie from 'cookie'
 
 
 const TEST_USER: IUser = {
@@ -20,8 +25,18 @@ const TEST_USER: IUser = {
     authorization: 'RESTRICTED'
 }
 
+const config: KeycloakConfig = {
+    clientId: 'curtis-world-verifier',
+    realm: 'curtis-world',
+    url: 'https://sso.quartech.app/auth'
+}
+
+interface AppProps extends NextAppProps {
+    cookies: any
+}
+
 const CustomApp = (props: AppProps) => {
-    const { Component, pageProps } = props
+    const { Component, pageProps, cookies } = props
 
     return (
         <>
@@ -37,18 +52,37 @@ const CustomApp = (props: AppProps) => {
             </Head>
 
                     <div id='curtis-world'>
-                        <KeycloakProvider >
+                        <SSRKeycloakProvider
+                            keycloakConfig={config}
+                            persistor={SSRCookies(cookies)}
+                            initOptions={{ onLoad: 'login-required' }}
+                        >
                             <AuthProvider user={TEST_USER}>
                                 <div>
                                     <TopBar />
                                     <Component {...pageProps} />
                                 </div>
                             </AuthProvider>
-                        </KeycloakProvider>
+                        </SSRKeycloakProvider>
                     </div>
 
         </>
     )
+}
+
+function parseCookies(req?: IncomingMessage) {
+    if (!req || !req.headers) {
+        return {}
+    }
+    
+    return cookie.parse(req.headers.cookie || '')
+}
+  
+export const getInitialProps = async (context: AppContext) => {
+    // Extract cookies from AppContext
+    return {
+        cookies: parseCookies(context?.ctx?.req),
+    }
 }
 
 export default CustomApp
