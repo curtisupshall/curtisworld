@@ -22,15 +22,9 @@ import DocumentList from '../components/DocumentList'
 import ClassificationText from '../components/ClassificationText'
  
 const exampleData: Record<string, string> = {
-    region: 'BC',
-    family_name: 'Upshall',
-    country: 'Canada',
-    issued: '01/26/2022 22:23:20',
-    postal_code: 'V8V 1T5',
-    street_address: '8 - 415 Superior Street',
-    birthdate: '1999-01-19',
-    locality: 'Victoria',
-    given_name: 'Curtis'
+    first_name: 'Hello',
+    last_name: 'World',
+    authorization: 'Restricted'
 }
 
 const Home = () => {

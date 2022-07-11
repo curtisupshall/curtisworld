@@ -10,7 +10,7 @@ import {
 } from '@mui/material'
 
 import { IDocument } from '../../types/document'
-import ClassificationText from '../ClassificationText'
+// import ClassificationText from '../ClassificationText'
 
 const EMPTY_DOCUMENT: IDocument = {
     name: '',
@@ -36,7 +36,7 @@ const DocumentDialog = (props: IDocumentDialogProps) => {
                 <TextField
                     variant='filled'
                     label='Classification'
-                    value={<ClassificationText>{classification}</ClassificationText>}
+                    value={classification}
                     disabled
                     margin='normal'
                 />                

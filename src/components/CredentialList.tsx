@@ -26,7 +26,7 @@ const CredentialList = (props: ICredentialListProps) => {
 
     const [showHidden, setShowHidden] = React.useState(false)
     const { visible, hidden } = truncateFields(credentials)
-    const hasHiddenFields: boolean = Object.keys(hidden).length > 0
+    const hasHiddenFields: boolean = hidden && Object.keys(hidden).length > 0
 
     
     const handleClickShowHidden = () => {
@@ -34,19 +34,22 @@ const CredentialList = (props: ICredentialListProps) => {
     }
 
     const renderCredentialFields = (data: Record<string, string>) => (
-        <FormGroup>
-            {Object.keys(data).map((key: string) => (
-                <TextField
-                    disabled
-                    key={key}
-                    value={data[key]}
-                    label={key}
-                    InputLabelProps={{ style: { fontFamily: 'monospace' }}}
-                    margin='dense'
-                    size='small'
-                />
-            ))}
-        </FormGroup>
+        data ? (
+            <FormGroup>
+                {Object.keys(data).map((key: string) => (
+                    <TextField
+                        disabled
+                        key={key}
+                        value={data[key]}
+                        label={key}
+                        InputLabelProps={{ style: { fontFamily: 'monospace' }}}
+                        margin='dense'
+                        size='small'
+                    />
+                ))}
+            </FormGroup>
+        ) : null
+        
     )
 
 

@@ -2,6 +2,7 @@ import '../assets/styles/main.scss'
 
 import { AppProps as NextAppProps, AppContext } from 'next/app'
 import Head from 'next/head'
+import jwtDecode from 'jwt-decode'
 import React from 'react'
 
 import { IUser } from '../types/user'
@@ -20,8 +21,8 @@ import cookie from 'cookie'
 
 
 const TEST_USER: IUser = {
-    givenName: 'Curtis',
-    familyName: 'Upshall',
+    givenName: 'Hello',
+    familyName: 'World',
     authorization: 'RESTRICTED'
 }
 
@@ -37,6 +38,9 @@ interface AppProps extends NextAppProps {
 
 const CustomApp = (props: AppProps) => {
     const { Component, pageProps, cookies } = props
+    const [payload, setPayload] = React.useState(null)
+    // const { first_name, last_name } = payload
+    console.log('payload:', payload)
 
     return (
         <>
@@ -50,12 +54,12 @@ const CustomApp = (props: AppProps) => {
                 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet" />
                 <title>Curtis' World'</title>
             </Head>
-
                     <div id='curtis-world'>
                         <SSRKeycloakProvider
                             keycloakConfig={config}
                             persistor={SSRCookies(cookies)}
                             initOptions={{ onLoad: 'login-required' }}
+                            onTokens={(tokens) => setPayload(jwtDecode(tokens.token))}
                         >
                             <AuthProvider user={TEST_USER}>
                                 <div>
